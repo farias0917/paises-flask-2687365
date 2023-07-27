@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>paises</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css" integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+
+
+    {% if userName %}
+    <h1>Bienvenide, {{userName }} mousetache </h1>
+    {% else  %}
+    <h2>Usuario invitado</h2>
+    {% endif %}
+    <h2> Listado de paises :v</h2>
+
+    <p>{{paises}}</p>
+
+    <table class="table table-bordered">
+        <thead> 
+            <tr>
+                <th>Nombre</th>
+                <th>Población</th>
+                <th>Superficie</th>
+                <th>Densidad</th>
+                <th># paises</th>
+                <th>nombre paises</th>
+                <th>nombre Capital</th>
+                <th>Moneda</th>
+            </tr>
+        </thead>
+        <tbody> 
+           
+            {%for continente in continentes %}
+            <tr>
+                <td rowspan="{{continente.paises | length}}"> {{ continente.nombre }} </td>
+                <td rowspan="{{continente.paises | length}}"> {{ continente.poblacion }} </td>
+                <td rowspan="{{continente.paises | length}}"> {{ continente.superficie }} </td>
+                <td rowspan="{{continente.paises | length}}"> {{ continente.densidad }} </td>
+                <td rowspan="{{continente.paises | length}}"> {{ continente.numPaises }} </td>
+                {%for pais in continente.paises%}
+                <td>{{pais.nom}}</td>
+                <td>{{pais.cap}}</td>
+                <td>{{pais.mon}}</td>
+            </tr>
+                {%  endfor %}
+            {% endfor%}
+            
+        </tbody>
+        <tfoot> 
+        </tfoot>
+     
+    </table>
+</body>
+</html>
